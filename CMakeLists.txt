@@ -1,0 +1,25 @@
+# message(STATUS "MY_VARIABLE=${CMAKE_SOURCE_DIR}")
+cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
+
+set(PROJECT_NAME "2_ip_filter")
+
+set(PATCH_VERSION "2" CACHE INTERNAL "Patch version")
+set(PROJECT_VESRION 0.1.${PATCH_VERSION})
+
+project(${PROJECT_NAME} VERSION ${PROJECT_VESRION})
+
+add_subdirectory(2_ip_filter)
+add_subdirectory(2_ip_filter/version)
+add_subdirectory(2_ip_filter/sort_ip)
+
+install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
+
+set(CPACK_GENERATOR DEB)
+set(CPACK_PACKAGE_VERSION_MAJOR "${PROJECT_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${PROJECT_VERSION_MINOR}")
+set(CPACK_PACKAGE_VERSION_PATCH "${PROJECT_VERSION_PATCH}")
+set(CPACK_PACKAGE_CONTACT example@example.com)
+
+include(CPack)
+
+enable_testing()
