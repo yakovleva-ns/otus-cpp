@@ -1,28 +1,10 @@
 cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
 
-project(${PROJECT_NAME} VERSION ${PROJECT_VESRION})
-
 add_library(ip_filter STATIC ip_filter.cpp ip_filter.h)
 
-set_target_properties(${PROJECT_NAME} PROPERTIES
-  CXX_STANDARD 17
-  CXX_STANDARD_REQUIRED ON
-  RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin
-)
-
 target_include_directories(
-  ${PROJECT_NAME} PRIVATE
-  ${CMAKE_SOURCE_DIR}/build
-  ${CMAKE_SOURCE_DIR}/version_lib
-  ${CMAKE_SOURCE_DIR}/2_ip_filter
+  ip_filter PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
 )
-
-target_link_libraries(${PROJECT_NAME}
-  version_lib
-  ip_filter
-)
-
-add_executable(${PROJECT_NAME} main.cpp)
 
 if (MSVC)
     target_compile_options(ip_filter PRIVATE
@@ -33,3 +15,20 @@ else ()
         -Wall -Wextra -pedantic -Werror
     )
 endif()
+
+add_executable(ip_filter_cli main.cpp)
+
+target_link_libraries(ip_filter_cli PUBLIC ip_filter
+)
+
+if (MSVC)
+    target_compile_options(ip_filter_cli PRIVATE
+        /W4
+    )
+else ()
+    target_compile_options(ip_filter_cli PRIVATE
+        -Wall -Wextra -pedantic -Werror
+    )
+endif()
+
+install(TARGETS ip_filter_cli RUNTIME DESTINATION bin)

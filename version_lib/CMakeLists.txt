@@ -11,10 +11,7 @@ set_target_properties(version_lib PROPERTIES
   CXX_STANDARD_REQUIRED ON
 )
 
-target_include_directories(version_lib
-  PRIVATE
-${CMAKE_SOURCE_DIR}/build
-)
+target_include_directories(version_lib INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/version)
 
 if (MSVC)
     target_compile_options(version_lib PRIVATE
