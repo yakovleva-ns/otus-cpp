@@ -9,11 +9,7 @@ add_library(ip_filter STATIC ip_filter.cpp ip_filter.h)
 set_target_properties(${PROJECT_NAME} PROPERTIES
   CXX_STANDARD 17
   CXX_STANDARD_REQUIRED ON
-)
-
-target_link_libraries(${PROJECT_NAME}
-  version_lib
-  ip_filter
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin
 )
 
 target_include_directories(ip_filter
