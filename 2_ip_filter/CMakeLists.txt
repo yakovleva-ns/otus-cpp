@@ -18,7 +18,7 @@ target_include_directories(
   ${CMAKE_SOURCE_DIR}/2_ip_filter
 )
 
-target_link_libraries(${TARGET_NAME}
+target_link_libraries(${PROJECT_NAME}
   version_lib
   sort_ip
 )
