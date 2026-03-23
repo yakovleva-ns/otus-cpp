@@ -17,6 +17,11 @@ target_include_directories(ip_filter
   ${CMAKE_BINARY_DIR}
 )
 
+target_link_libraries(${TARGET_NAME}
+  version_lib
+  sort_ip
+)
+
 if (MSVC)
     target_compile_options(ip_filter PRIVATE
         /W4
