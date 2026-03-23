@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
 
-project(${PROJECT_NAME} VERSION 0.0.1)
+project(${PROJECT_NAME} VERSION 0.0.${PATCH_VERSION})
 
 add_executable(${PROJECT_NAME} main.cpp)
 
@@ -9,11 +9,17 @@ add_library(ip_filter STATIC ip_filter.cpp ip_filter.h)
 set_target_properties(${PROJECT_NAME} PROPERTIES
   CXX_STANDARD 17
   CXX_STANDARD_REQUIRED ON
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin
+  RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin
+)
+
+target_include_directories(ip_filter
+  PRIVATE
+  ${CMAKE_SOURCE_DIR}/build
 )
 
 target_include_directories(
   ${PROJECT_NAME} PRIVATE
+  ${CMAKE_SOURCE_DIR}/build
   ${CMAKE_SOURCE_DIR}/version_lib
   ${CMAKE_SOURCE_DIR}/2_ip_filter
 )
