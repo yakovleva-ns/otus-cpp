@@ -12,9 +12,10 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin
 )
 
-target_include_directories(ip_filter
-  PRIVATE
-  ${CMAKE_BINARY_DIR}
+target_include_directories(
+  ${PROJECT_NAME} PRIVATE
+  ${CMAKE_SOURCE_DIR}/version_lib
+  ${CMAKE_SOURCE_DIR}/2_ip_filter
 )
 
 target_link_libraries(${TARGET_NAME}
