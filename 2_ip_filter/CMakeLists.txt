@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
 
 project(ip_filter VERSION 0.0.1)
 
-add_executable(ip_filter main.cpp)
+add_executable(${PROJECT_NAME} main.cpp)
 
 add_library(ip_filter STATIC ip_filter.cpp ip_filter.h)
 

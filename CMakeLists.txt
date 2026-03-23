@@ -8,15 +8,8 @@ set(PROJECT_VESRION 2.0.${PATCH_VERSION})
 
 project(${PROJECT_NAME} VERSION ${PROJECT_VESRION})
 
-add_subdirectory(2_ip_filter)
+add_subdirectory(ip_filter)
 add_subdirectory(version_lib)
-
-set_target_properties(${PROJECT_NAME} PROPERTIES
-  CXX_STANDARD 20
-  CXX_STANDARD_REQUIRED ON
-  CXX_EXTENSIONS ON
-  RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin
-)
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
 
