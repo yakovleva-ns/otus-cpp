@@ -18,11 +18,11 @@ target_include_directories(ip_filter
 )
 
 if (MSVC)
-    target_compile_options(version_lib PRIVATE
+    target_compile_options(ip_filter PRIVATE
         /W4
     )
 else ()
-    target_compile_options(version_lib PRIVATE
+    target_compile_options(ip_filter PRIVATE
         -Wall -Wextra -pedantic -Werror
     )
 endif()
