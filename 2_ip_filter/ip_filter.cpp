@@ -50,7 +50,7 @@ std::vector<Ip> IpFilter::filterByte(std::vector<Ip> ipPool, int firstByte, int 
 
     for(Ip ip : ipPool)
     {
-        if ((stoi(ip[0]) == 46) && (stoi(ip[1]) == 70))
+        if ((stoi(ip[0]) == firstByte) && (stoi(ip[1]) == secondByte))
             ipPoolSort.push_back(ip);
     }
 
