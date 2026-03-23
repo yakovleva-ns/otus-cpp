@@ -53,22 +53,13 @@ void printIpPool(std::vector<Ip> ipPool)
 
 int main(int /*argc*/, char** /*argv*/) {
 {
-    try
-    {
-        auto ipPool =  readIpPool();
+    auto ipPool =  readIpPool();
 
-        IpFilter filter;
-        filter.sortStd(ipPool);
+    IpFilter filter;
+    filter.sortStd(ipPool);
 
-        printIpPool(ipPool);
-        printIpPool(filter.filterByte(ipPool, 1));
-        printIpPool(filter.filterByte(ipPool, 46, 70));
-        printIpPool(filter.filterAnyByte(ipPool, 46));
-    }
-    catch(const std::exception &e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-
-    return 0;
+    printIpPool(ipPool);
+    printIpPool(filter.filterByte(ipPool, 1));
+    printIpPool(filter.filterByte(ipPool, 46, 70));
+    printIpPool(filter.filterAnyByte(ipPool, 46));
 }
