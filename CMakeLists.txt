@@ -8,7 +8,7 @@ set(PROJECT_VESRION 2.0.${PATCH_VERSION})
 
 project(${PROJECT_NAME} VERSION ${PROJECT_VESRION})
 
-add_subdirectory(ip_filter)
+add_subdirectory(2_ip_filter)
 add_subdirectory(version_lib)
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
