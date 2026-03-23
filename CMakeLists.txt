@@ -10,7 +10,19 @@ project(${PROJECT_NAME} VERSION ${PROJECT_VESRION})
 
 add_subdirectory(2_ip_filter)
 add_subdirectory(version_lib)
-add_subdirectory(2_ip_filter/sort_ip)
+
+
+target_link_libraries(${PROJECT_NAME}
+  version_lib
+  2_ip_filter
+)
+
+set_target_properties(${PROJECT_NAME} PROPERTIES
+  CXX_STANDARD 20
+  CXX_STANDARD_REQUIRED ON
+  CXX_EXTENSIONS ON
+  RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin
+)
 
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
 
