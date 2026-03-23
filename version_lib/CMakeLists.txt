@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
 
-project(version_lib VERSION 0.0.2)
+project(version_lib VERSION 0.0.1)
 
 configure_file(version.h.in version.h)
 
