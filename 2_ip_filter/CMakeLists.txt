@@ -20,7 +20,7 @@ target_include_directories(
 
 target_link_libraries(${PROJECT_NAME}
   version_lib
-  2_ip_filter
+  ip_filter
 )
 
 if (MSVC)
