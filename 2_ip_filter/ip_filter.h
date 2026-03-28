@@ -6,7 +6,7 @@ public:
     IpFilter();
 
     //сортировка в обратном лексикографическом порядке
-    void sortStd(std::vector<Ip> &ipPool);
+    void sortStd(IpPool &ipPool);
 
     //сортировки по байтам
     IpPool filterByte(IpPool ipPool, std::vector<int> bytes);
