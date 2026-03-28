@@ -42,20 +42,30 @@ void IpFilter::sortStd(std::vector<Ip> &ipPool)
 IpPool IpFilter::filterByte(IpPool ipPool, std::vector<int> bytes)
 {
     IpPool ipPoolSort;
-
+    IpPool::iterator iterIp;
     if (bytes.size() <= 4)
     {
-        for(Ip ip : ipPool)
+        for(unsigned int i = 0 ; i < bytes.size() ; i++)
         {
-            bool needIp = true;
-            for( unsigned int i = 0 ; i < bytes.size() ; i++)
-            {
-                if (stoi(ip[i]) != bytes[i])
-                    needIp = false;
-            }
-            if (needIp)
-                ipPoolSort.push_back(ip);
+            iterIp = std::find_if(ipPool.begin(), ipPool.end(),
+                                 [bytes, i](const Ip &ip) -> bool
+                                 { 
+                                    return (stoi(ip[i]) == bytes[i]);
+                                 });
+            if (iterIp == ipPool.end())
+                break;
         }
+
+        if (iterIp == ipPool.end())
+            return ipPoolSort;
+
+        for(auto ip = iterIp; ip < ipPool.end(); ip++)
+        {
+            if (stoi((*ip)[bytes.size()-1]) != bytes[bytes.size()-1])
+                break;
+                
+            ipPoolSort.push_back(*ip);
+         }
     }
     return ipPoolSort;
 }
