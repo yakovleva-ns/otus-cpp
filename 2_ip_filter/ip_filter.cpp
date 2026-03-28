@@ -60,7 +60,7 @@ IpPool IpFilter::filterByte(IpPool ipPool, std::vector<int> bytes)
     return ipPoolSort;
 }
 
-IpPool IpFilter::filterAnyByte(IpPool ipPool, unsigned int byte)
+IpPool IpFilter::filterAnyByte(IpPool ipPool, int byte)
 {
     IpPool ipPoolSort;
 
