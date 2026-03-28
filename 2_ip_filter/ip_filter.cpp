@@ -7,7 +7,9 @@
 IpFilter::IpFilter()
 {};
 
-bool operator > ( const Ip &ip1, const Ip &ip2)
+template< class T, class Alloc >
+bool operator>=( const std::vector<T, Alloc>& ip1,
+                 const std::vector<T, Alloc>& ip2 )
 {
      if (stoi(ip1[0]) > stoi(ip2[0]))
             return true;
@@ -28,9 +30,9 @@ bool operator > ( const Ip &ip1, const Ip &ip2)
             return true;
 
     return false;
-}
+};
 
-void IpFilter::sortStd(std::vector<Ip> &ipPool)
+void IpFilter::sortStd(IpPool &ipPool)
 {
     std::sort(ipPool.begin(), ipPool.end(),
          [](const Ip &ip1, const Ip &ip2) -> bool
