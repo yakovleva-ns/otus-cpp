@@ -62,7 +62,7 @@ IpPool IpFilter::filterByte(IpPool ipPool, std::vector<int> bytes)
         if (iterIp == ipPool.end())
             return ipPoolSort;
 
-        //добавляем в пулл все вхождения до тех пор, пока не изменится последний байт из заданных
+        //добавляем в результирующий массив все вхождения до тех пор, пока не изменится последний байт из заданных, так как массив отсортирован
         for(auto ip = iterIp; ip < ipPool.end(); ip++)
         {
             if (stoi((*ip)[bytes.size()-1]) != bytes[bytes.size()-1])
