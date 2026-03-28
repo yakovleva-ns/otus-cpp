@@ -1,4 +1,4 @@
-typedef std::vector<std::string> Ip;
+#include "ip_pool_interaction.h"
 
 class IpFilter
 {
@@ -9,7 +9,6 @@ public:
     void sortStd(std::vector<Ip> &ipPool);
 
     //сортировки по байтам
-    std::vector<Ip> filterByte(std::vector<Ip> ipPool, int byte);
-    std::vector<Ip> filterByte(std::vector<Ip> ipPool, int firstByte, int secondByte);
-    std::vector<Ip> filterAnyByte(std::vector<Ip> ipPool, int byte);
+    IpPool filterByte(IpPool ipPool, std::vector<int> bytes);
+    IpPool filterAnyByte(IpPool ipPool, int byte);
 };
