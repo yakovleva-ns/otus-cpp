@@ -1,16 +1,15 @@
 #include <algorithm>
 #include <cstdlib>
-#include <string>
-#include <vector>
+
 #include "ip_filter.h"
 
 
 IpFilter::IpFilter()
 {};
 
-bool needSwapIp(Ip &ip1, Ip &ip2)
+bool operator > ( const Ip &ip1, const Ip &ip2)
 {
-    if (stoi(ip1[0]) > stoi(ip2[0]))
+     if (stoi(ip1[0]) > stoi(ip2[0]))
             return true;
 
     if (stoi(ip1[0]) == stoi(ip2[0]))
@@ -31,35 +30,39 @@ bool needSwapIp(Ip &ip1, Ip &ip2)
     return false;
 }
 
-std::vector<Ip> IpFilter::filterByte(std::vector<Ip> ipPool, int byte)
+void IpFilter::sortStd(std::vector<Ip> &ipPool)
 {
-    std::vector<Ip> ipPoolSort;
+    std::sort(ipPool.begin(), ipPool.end(),
+         [](const Ip &ip1, const Ip &ip2) -> bool
+         { 
+            return (ip1 > ip2);
+         });
+}
 
-    for(Ip ip : ipPool)
+IpPool IpFilter::filterByte(IpPool ipPool, std::vector<int> bytes)
+{
+    IpPool ipPoolSort;
+
+    if (bytes.size() <= 4)
     {
-        if (stoi(ip[0]) == byte)
-            ipPoolSort.push_back(ip);
+        for(Ip ip : ipPool)
+        {
+            bool needIp = true;
+            for(int i = 0 ; i < bytes.size() ; i++)
+            {
+                if (stoi(ip[i]) != bytes[i])
+                    needIp = false;
+            }
+            if (needIp)
+                ipPoolSort.push_back(ip);
+        }
     }
-
     return ipPoolSort;
 }
 
-std::vector<Ip> IpFilter::filterByte(std::vector<Ip> ipPool, int firstByte, int secondByte)
+IpPool IpFilter::filterAnyByte(IpPool ipPool, int byte)
 {
-    std::vector<Ip> ipPoolSort;
-
-    for(Ip ip : ipPool)
-    {
-        if ((stoi(ip[0]) == firstByte) && (stoi(ip[1]) == secondByte))
-            ipPoolSort.push_back(ip);
-    }
-
-    return ipPoolSort;
-}
-
-std::vector<Ip> IpFilter::filterAnyByte(std::vector<Ip> ipPool, int byte)
-{
-    std::vector<Ip> ipPoolSort;
+    IpPool ipPoolSort;
 
     for(Ip ip : ipPool)
     {
@@ -68,9 +71,4 @@ std::vector<Ip> IpFilter::filterAnyByte(std::vector<Ip> ipPool, int byte)
     }
 
     return ipPoolSort;
-}
-
-void IpFilter::sortStd(std::vector<Ip> &ipPool)
-{
-    std::sort(ipPool.begin(), ipPool.end(), needSwapIp);
 }
