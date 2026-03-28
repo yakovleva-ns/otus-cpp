@@ -39,7 +39,7 @@ void IpFilter::sortStd(std::vector<Ip> &ipPool)
          });
 }
 
-IpPool IpFilter::filterByte(IpPool ipPool, std::vector<unsigned int> bytes)
+IpPool IpFilter::filterByte(IpPool ipPool, std::vector<int> bytes)
 {
     IpPool ipPoolSort;
 
