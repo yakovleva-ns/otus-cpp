@@ -48,7 +48,7 @@ IpPool IpFilter::filterByte(IpPool ipPool, std::vector<int> bytes)
         for(Ip ip : ipPool)
         {
             bool needIp = true;
-            for(int i = 0 ; i < bytes.size() ; i++)
+            for( auto i = 0 ; i < bytes.size() ; i++)
             {
                 if (stoi(ip[i]) != bytes[i])
                     needIp = false;
