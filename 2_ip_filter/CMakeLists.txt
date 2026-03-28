@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
 
-add_library(ip_filter STATIC ip_filter.cpp ip_filter.h)
+add_library(ip_filter STATIC ip_pool_interaction.cpp ip_filter.cpp)
 
 target_include_directories(
   ip_filter PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
