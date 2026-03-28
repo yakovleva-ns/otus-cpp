@@ -47,6 +47,7 @@ IpPool IpFilter::filterByte(IpPool ipPool, std::vector<int> bytes)
     IpPool::iterator iterIp;
     if (bytes.size() <= 4)
     {
+        //находим первое вхождение указанных байтов
         for(unsigned int i = 0 ; i < bytes.size() ; i++)
         {
             iterIp = std::find_if(ipPool.begin(), ipPool.end(),
@@ -61,6 +62,7 @@ IpPool IpFilter::filterByte(IpPool ipPool, std::vector<int> bytes)
         if (iterIp == ipPool.end())
             return ipPoolSort;
 
+        //добавляем в пулл все вхождения до тех пор, пока не изменится последний байт из заданных
         for(auto ip = iterIp; ip < ipPool.end(); ip++)
         {
             if (stoi((*ip)[bytes.size()-1]) != bytes[bytes.size()-1])
