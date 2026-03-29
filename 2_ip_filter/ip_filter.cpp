@@ -7,9 +7,7 @@
 IpFilter::IpFilter()
 {};
 
-template< class T, class Alloc >
-bool operator>=( const std::vector<T, Alloc>& ip1,
-                 const std::vector<T, Alloc>& ip2 )
+bool needSwap( const Ip ip1,const Ip ip2 )
 {
      if (stoi(ip1[0]) > stoi(ip2[0]))
             return true;
@@ -34,42 +32,46 @@ bool operator>=( const std::vector<T, Alloc>& ip1,
 
 void IpFilter::sortStd(IpPool &ipPool)
 {
-    std::sort(ipPool.begin(), ipPool.end(),
-         [](const Ip &ip1, const Ip &ip2) -> bool
-         { 
-            return (ip1 > ip2);
-         });
+   std::sort(ipPool.begin(), ipPool.end(), needSwap);
+}
+
+bool IpFilter::ipСompareBytes(Ip ip, std::vector<int> bytes)
+{ 
+    if (bytes.size() > 4)
+        return false;
+
+    int match = 0;
+    for(unsigned int i = 0 ; i < bytes.size() ; i++)
+    {
+        if (stoi(ip[i]) == bytes[i])
+            match++;
+    }
+    return (match == bytes.size());
 }
 
 IpPool IpFilter::filterByte(IpPool ipPool, std::vector<int> bytes)
 {
     IpPool ipPoolSort;
-    IpPool::iterator iterIp;
+
     if (bytes.size() <= 4)
     {
-        //находим первое вхождение указанных байтов
-        for(unsigned int i = 0 ; i < bytes.size() ; i++)
+        bool findFirstIp = false;
+
+        for(auto ip : ipPool)
         {
-            iterIp = std::find_if(ipPool.begin(), ipPool.end(),
-                                 [bytes, i](const Ip &ip) -> bool
-                                 { 
-                                    return (stoi(ip[i]) == bytes[i]);
-                                 });
-            if (iterIp == ipPool.end())
-                break;
+            //ищем первое вхождение, если еще не найдено
+            if (!findFirstIp)
+                    findFirstIp = ipСompareBytes(ip, bytes);
+
+            //первое вхождение найдено, берем элементы пока подходят
+            if (findFirstIp)
+            {
+                 if (ipСompareBytes(ip, bytes))
+                     ipPoolSort.push_back(ip);
+                 else
+                     return ipPoolSort;
+            }
         }
-
-        if (iterIp == ipPool.end())
-            return ipPoolSort;
-
-        //добавляем в результирующий массив все вхождения до тех пор, пока не изменится последний байт из заданных, так как массив отсортирован
-        for(auto ip = iterIp; ip < ipPool.end(); ip++)
-        {
-            if (stoi((*ip)[bytes.size()-1]) != bytes[bytes.size()-1])
-                break;
-                
-            ipPoolSort.push_back(*ip);
-         }
     }
     return ipPoolSort;
 }
