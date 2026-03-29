@@ -11,4 +11,6 @@ public:
     //сортировки по байтам
     IpPool filterByte(IpPool ipPool, std::vector<int> bytes);
     IpPool filterAnyByte(IpPool ipPool, int byte);
+
+    bool ipСompareBytes(Ip ipPool, std::vector<int> bytes);
 };
