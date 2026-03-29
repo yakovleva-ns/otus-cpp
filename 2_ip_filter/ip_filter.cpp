@@ -40,7 +40,7 @@ bool IpFilter::ipСompareBytes(Ip ip, std::vector<int> bytes)
     if (bytes.size() > 4)
         return false;
 
-    int match = 0;
+    unsigned int match = 0;
     for(unsigned int i = 0 ; i < bytes.size() ; i++)
     {
         if (stoi(ip[i]) == bytes[i])
