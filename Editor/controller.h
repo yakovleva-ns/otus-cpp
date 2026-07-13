@@ -3,8 +3,8 @@
 class Controller
 {
 public:
-    bool importFile(std::string filename);
-    bool exportFile(std::string filename);
+    bool importFile(const std::string& filename);
+    bool exportFile(const std::string& filename);
 
     void createModel();
 
