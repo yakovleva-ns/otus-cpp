@@ -1,14 +1,14 @@
 # message(STATUS "MY_VARIABLE=${CMAKE_SOURCE_DIR}")
 cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
 
-set(PROJECT_NAME "2_ip_filter")
+set(PROJECT_NAME "Editor")
 
 set(PATCH_VERSION "2" CACHE INTERNAL "Patch version")
 set(PROJECT_VESRION 2.0.${PATCH_VERSION})
 
 project(${PROJECT_NAME} VERSION ${PROJECT_VESRION})
 
-add_subdirectory(2_ip_filter)
+add_subdirectory(Editor)
 add_subdirectory(version_lib)
 
 set(CPACK_GENERATOR DEB)
