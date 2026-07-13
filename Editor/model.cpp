@@ -26,10 +26,11 @@ int Model::addPrimitive(PtrPrimitive pPrimitive)
     return last;
 }
 
-void Model::removePrimitive(int id) 
-{
-    if (m_mapPrimitives.contains(id)) 
-        m_mapPrimitives.erase(id);
+
+void Model::removePrimitive(int id) {
+    auto it = m_mapPrimitives.find(id);
+    if (it != m_mapPrimitives.end())
+        m_mapPrimitives.erase(it);
 }
 
 void Model::removePrimitive(PtrPrimitive pPrimitive) 
