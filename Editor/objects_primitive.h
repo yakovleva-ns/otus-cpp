@@ -1,5 +1,5 @@
 #pragma once
-#include "Primitive.h"
+#include "primitive.h"
 
 
 class Polygon : public BasePrimitive 
