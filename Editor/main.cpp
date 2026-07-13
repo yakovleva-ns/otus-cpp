@@ -1,7 +1,7 @@
 #include<list>
 
 #include "controller.h"
-#include "ObjectsPrimitive.h"
+#include "objects_primitive.h"
 
 
 int main() {
