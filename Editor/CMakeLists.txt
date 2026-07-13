@@ -18,8 +18,7 @@ endif()
 
 add_executable(editor_cli main.cpp)
 
-target_link_libraries(editor_cli PUBLIC ip_filter
-)
+target_link_libraries(editor_cli PUBLIC editor)
 
 if (MSVC)
     target_compile_options(editor_cli PRIVATE
