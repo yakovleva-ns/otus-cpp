@@ -22,7 +22,7 @@ class BasePrimitive : public IPrimitive
 protected:
     int m_id; 
    
-    //размер, позиция 
+    //Г°Г Г§Г¬ГҐГ°, ГЇГ®Г§ГЁГ¶ГЁГї 
 
 public:
     BasePrimitive() : m_id(0) {} 
