@@ -28,7 +28,7 @@ int Model::addPrimitive(PtrPrimitive pPrimitive)
 
 
 void Model::removePrimitive(int id) {
-    auto it = m_mapPrimitives.find(id);
+    auto it = m_mapPrimitives.find(id); 
     if (it != m_mapPrimitives.end())
         m_mapPrimitives.erase(it);
 }
