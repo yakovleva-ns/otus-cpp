@@ -4,6 +4,10 @@
 class Model
 {
 public:
+
+    Model();
+    Model(std::string filename);
+
     int addPrimitive(PtrPrimitive pPrimitive);
 
     void removePrimitive(PtrPrimitive pPrimitive);
