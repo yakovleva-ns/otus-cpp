@@ -3,7 +3,7 @@
 
 bool Controller::importFile(std::string filename) 
 {
-    Model loadedModel;
+    Model loadedModel(filename);
     m_pModel.reset(new Model(loadedModel));
     std::cout << "Model loaded! \n";
 
@@ -13,7 +13,7 @@ bool Controller::importFile(std::string filename)
 
 bool Controller::exportFile(std::string filename) 
 {
-    std::cout << "Model export to file!"<< std::endl;
+    std::cout << "Model export to file!"<< filename << std::endl;
     return true; // or false
 }
 
