@@ -1,4 +1,4 @@
-#include "Model.h"
+#include "model.h"
 #include <iostream>
 
 void Model::show() const {
