@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10 FATAL_ERROR)
 
-add_library(editor STATIC Controller.cpp Model.cpp ObjectsPrimitive.cpp Primitive.cpp View.cpp)
+add_library(editor STATIC controller.cpp model.cpp objects_primitive.cpp primitive.cpp view.cpp)
 
 target_include_directories(
   editor PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}
