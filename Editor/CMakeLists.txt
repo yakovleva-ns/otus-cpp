@@ -31,4 +31,4 @@ else ()
     )
 endif()
 
-install(TARGETS ip_filter_cli RUNTIME DESTINATION bin)
+install(TARGETS editor_cli RUNTIME DESTINATION bin)
