@@ -11,7 +11,7 @@ if (MSVC)
         /W4
     )
 else ()
-    target_compile_options(ip_filter PRIVATE
+    target_compile_options(editor PRIVATE
         -Wall -Wextra -pedantic -Werror
     )
 endif()
