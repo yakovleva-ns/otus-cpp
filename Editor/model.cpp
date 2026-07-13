@@ -1,6 +1,15 @@
 #include "model.h"
 #include <iostream>
 
+  Model::Model()
+  {
+
+  }
+    
+  Model::Model(std::string filename)
+  {
+      std::cout << "Model create!"<<filename<< std::endl;
+  }
 void Model::show() const {
     for (const auto& [id, primitive] : m_mapPrimitives) {
         primitive->draw();
