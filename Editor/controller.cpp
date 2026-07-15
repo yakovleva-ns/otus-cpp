@@ -25,10 +25,10 @@ void Controller::createModel()
 }
 
 
-int Controller::addPrimitive(PtrPrimitive primitive) {
+int Controller::addPrimitive(const PtrPrimitive &pPrimitive) {
     if (m_pModel)
     {
-        int id = m_pModel->addPrimitive(primitive);
+        int id = m_pModel->addPrimitive(pPrimitive);
         std::cout << "Add primitive, id " << id << std::endl;
         return id;
     }
