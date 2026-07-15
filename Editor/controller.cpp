@@ -17,7 +17,6 @@ bool Controller::exportFile(const std::string& filename)
 void Controller::createModel() 
 {
     m_pModel.reset(new Model());
-    std::cout << "Model create!"<< std::endl;
 }
 
 
@@ -25,7 +24,6 @@ int Controller::addPrimitive(const PtrPrimitive &pPrimitive) {
     if (m_pModel)
     {
         int id = m_pModel->addPrimitive(pPrimitive);
-        std::cout << "Add primitive, id " << id << std::endl;
         return id;
     }
     std::cout << "Model not exist"<< std::endl;
@@ -37,7 +35,6 @@ void Controller::removePrimitive(int id) {
     if (m_pModel)
     {
         m_pModel->removePrimitive(id);
-        std::cout << "Remove primitive, id" << id << std::endl;
     }
 }
 
