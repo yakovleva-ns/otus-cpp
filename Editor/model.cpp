@@ -49,7 +49,7 @@ void Model::removePrimitive(const PtrPrimitive &pPrimitive)
 
 bool Model::loadFromFile(const std::string &filename)
 {
-    std::cout << "Model loaded! << filename << std::endl;
+    std::cout << "Model loaded!" << filename << std::endl;
     return true; //or false
 }
 
