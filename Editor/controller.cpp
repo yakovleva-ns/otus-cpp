@@ -1,20 +1,16 @@
-#include "controller.h"
+#include "Controller.h"
 #include <iostream>
 
 bool Controller::importFile(const std::string& filename) 
 {
-    Model loadedModel(filename);
-    m_pModel.reset(new Model(loadedModel));
-    std::cout << "Model loaded! \n";
-
-    return true; // or false
+    m_pModel.reset(new Model());
+    return m_pModel->loadFromFile(filename);
 }
 
 
 bool Controller::exportFile(const std::string& filename) 
 {
-    std::cout << "Model export to file!"<< filename << std::endl;
-    return true; // or false
+    return m_pModel->saveToFile(filename);
 }
 
 
