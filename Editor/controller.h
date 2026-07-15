@@ -10,10 +10,10 @@ public:
 
     void createModel();
 
-    int addPrimitive(PtrPrimitive pPrimitive);
+    int addPrimitive(const PtrPrimitive &pPrimitive);
 
     void removePrimitive(int id);
-    void removePrimitive(PtrPrimitive pPrimitive);
+    void removePrimitive(const PtrPrimitive &pPrimitive);
 
     void showModel();
 
