@@ -1,4 +1,4 @@
-#include "Controller.h"
+#include "controller.h"
 #include <iostream>
 
 bool Controller::importFile(const std::string& filename) 
