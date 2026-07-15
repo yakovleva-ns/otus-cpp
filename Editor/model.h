@@ -13,13 +13,12 @@ public:
     void removePrimitive(const PtrPrimitive &pPrimitive);
     void removePrimitive(int id);
 
-    void loadFromFile(const std::string &filename);
-    void saveToFile(const std::string &filename);
+    bool loadFromFile(const std::string &filename);
+    bool saveToFile(const std::string &filename);
 
     void show() const;
 
 private:
     std::unordered_map<int, PtrPrimitive> m_mapPrimitives;
 };
-
 
