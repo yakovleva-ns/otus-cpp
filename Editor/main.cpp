@@ -15,7 +15,7 @@ int main() {
     controller.addPrimitive(std::make_shared<Polygon>());
 
     controller.showModel();
-    controller.exportFile(std::string("model.model"));
+    controller.exportFile("model.model");
 
     return 0;
 }
