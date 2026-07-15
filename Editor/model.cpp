@@ -35,7 +35,7 @@ int Model::addPrimitive(const PtrPrimitive &pPrimitive)
 
 void Model::removePrimitive(int id) 
 {
-    if (m_mapPrimitives.contains(id)) 
+    if (m_mapPrimitives.count(id)) 
         m_mapPrimitives.erase(id);
 
     std::cout << "Remove primitive, id" << id << std::endl;
@@ -49,12 +49,12 @@ void Model::removePrimitive(const PtrPrimitive &pPrimitive)
 
 bool Model::loadFromFile(const std::string &filename)
 {
-    std::cout << "Model loaded! \n";
+    std::cout << "Model loaded! << filename << std::endl;
     return true; //or false
 }
 
 bool Model::saveToFile(const std::string &filename)
 {
-    std::cout << "Model export to file!"<< std::endl;
+    std::cout << "Model export to file!" << filename<< std::endl;
     return true; //or false
 }
