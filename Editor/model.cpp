@@ -28,6 +28,8 @@ int Model::addPrimitive(const PtrPrimitive &pPrimitive)
     m_mapPrimitives[last] = pPrimitive;
     pPrimitive.get()->setId(last);
 
+    std::cout << "Add primitive, id " << last << std::endl;
+
     return last;
 }
 
@@ -35,6 +37,8 @@ void Model::removePrimitive(int id)
 {
     if (m_mapPrimitives.contains(id)) 
         m_mapPrimitives.erase(id);
+
+    std::cout << "Remove primitive, id" << id << std::endl;
 }
 
 void Model::removePrimitive(const PtrPrimitive &pPrimitive) 
