@@ -8,15 +8,18 @@ public:
 
     Model();
     Model(std::string filename);
+    int addPrimitive(const PtrPrimitive &pPrimitive);
 
-    int addPrimitive(PtrPrimitive pPrimitive);
-
-    void removePrimitive(PtrPrimitive pPrimitive);
+    void removePrimitive(const PtrPrimitive &pPrimitive);
     void removePrimitive(int id);
+
+    void loadFromFile(const std::string &filename);
+    void saveToFile(const std::string &filename);
 
     void show() const;
 
 private:
     std::unordered_map<int, PtrPrimitive> m_mapPrimitives;
 };
+
 
