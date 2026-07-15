@@ -1,5 +1,6 @@
 #pragma once
 #include "view.h"
+#include <string>
 
 class Controller
 {
